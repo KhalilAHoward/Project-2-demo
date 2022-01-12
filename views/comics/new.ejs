@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/comics" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title"/>
+  <label>Author:</label>
+  <input type="text" name="author"/>
+  <label>Artist:</label>
+  <input type="text" name="artist"/>
+  <label>Genre: </label>
+  <select name="genre">
+    <option value="Action">Action</option>
+    <option value="Thriller">Thriller</option>
+    <option value="Mystery">Mystery</option>
+    <option value="Fantasy">Fantasy</option>
+  </select>
+  <label>Release Year:</label>
+  <input type="number" name="releaseYear"/>
+  <input type="submit" value="Add Comic">
+</form>
+
+<%- include('../partials/footer') %>

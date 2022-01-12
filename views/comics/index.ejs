@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<table id="list">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Release<br>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comics.forEach(function(c) { %>
+      <tr>
+        <td><%= c.title %></td>
+        <td><%= c.author %></td>
+        <td><%= c.releaseYear %></td>
+        <td><a href="/comics/<%= c._id %>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>

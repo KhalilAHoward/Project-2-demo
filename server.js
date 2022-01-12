@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
+var indexRouter = require('./routes/index')
+var comicsRouter= require('./routes/comics')
+var reviewsRouter = require('./routes/reviews');
+
 
 // load the env vars
 require('dotenv').config();
@@ -49,8 +53,9 @@ app.use(function (req, res, next) {
 });
 
 // mount all routes with appropriate base paths
-app.use('/', indexRoutes);
-
+app.use('/', indexRouter);
+app.use('/comics', comicsRouter)
+app.use('/', reviewsRouter); 
 
 // invalid request, send 404 page
 app.use(function(req, res) {
