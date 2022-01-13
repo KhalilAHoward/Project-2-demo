@@ -29,7 +29,7 @@ function newComic(req, res){
 }
 
 function create(req, res){
-    console.log(req.body)
+    console.log(req.body.user)
     Comic.create(req.body, function(err, comicDocument){
         console.log(comicDocument, "< comicDocument");
 

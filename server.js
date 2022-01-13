@@ -52,6 +52,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(methodOverride('_method'));
+
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
 app.use('/comics', comicsRouter)

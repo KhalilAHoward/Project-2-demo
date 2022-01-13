@@ -1,7 +1,8 @@
 const Comic = require('../models/comic')
 
 module.exports = {
-    create
+    create,
+    delete: deleteReview
 }
 
 function create(req, res) {
@@ -17,4 +18,19 @@ function create(req, res) {
             res.redirect(`/comics/${comicDocument._id}`)
         })
     })
+}
+
+//Delete Review
+
+function deleteReview(req, res) {
+    Comic.findOne( 
+        {'reviews._id': req.params.id, 'reviews.userId' : req.user._id},
+        function(err, comic){
+            if (!comic || err) return res.redirect(`/comics/${comic._id}`);
+            comic.reviews.remove(req.params.id);
+            comic.save(function(err) {
+                res.redirect(`/comics/${comic._id}`);
+            });
+        }
+    );
 }

@@ -9,8 +9,16 @@
 </head>
 <body>
   <nav>
-    <a href="/comics/new" <%- title === 'Add Comic' ? 'class="active"' : '' %>>ADD COMIC</a>
-    <a href="/comics" <%- title === 'All Comics' ? 'class="active"' : '' %>>ALL COMICS</a>
+    <a href="/comics/new">New Comic</a>
+    <a href="/comics">All Comics</a>
+      <% if (user) { %>
+        <a href="/logout">Log Out</a>
+      <% } else { %>
+        <a href="/auth/google">Login with Google</a>
+      <% } %>
   </nav>
   <main>
     <h1><%= title %></h1>
+
+
+   
