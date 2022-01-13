@@ -2,7 +2,8 @@ const Comic = require('../models/comic')
 
 module.exports = {
     create,
-    delete: deleteReview
+    delete: deleteReview,
+    update
 }
 
 function create(req, res) {
@@ -33,4 +34,17 @@ function deleteReview(req, res) {
             });
         }
     );
+}
+
+//update review
+
+function update(req, res) {
+    Comic.findOne({'reviews._id': req.params.id}, function(err, comic) {
+      const reviewSubdoc = comic.reviews.id(req.params.id);
+      if(!reviewSubdoc.userId.equals(req.user._id)) return res.redirect(`/comics/${comic._id}`);
+      reviewSubdoc.text = req.body.text;
+      comic.save(function(err) {
+          res.redirect(`/comics/${comic._id}`);
+      })
+    });
 }
