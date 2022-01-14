@@ -48,7 +48,7 @@
             <button type="submit">UPDATE</button>
           </form></td>
           <% } %>
-          <% if (r.reader._id.equals(guest)) { %>
+          <% if (r.reader._id.equals(reader)) { %>
           <td><form action="/reviews/<%= r.id %>?_method=DELETE" method="POST" id="delete">
             <button type="submit">X</button>
           </form></td>
