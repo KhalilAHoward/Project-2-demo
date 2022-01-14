@@ -1,4 +1,5 @@
 const Comic = require('../models/comic');
+var api = require('marvel-comics-api')
 
 module.exports ={
     index,
@@ -36,5 +37,6 @@ function create(req, res){
         res.redirect(`/comics/${comicDocument._id}`);
     })
 }
+
 
 
